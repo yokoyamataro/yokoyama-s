@@ -47,6 +47,72 @@ const B = import.meta.env.BASE_URL;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content="https://yokoyama-s.jp/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://yokoyama-s.jp/og-image.png" />
+
+    <!-- Apple / PWA -->
+    <link rel="apple-touch-icon" sizes="180x180" href={`${B}apple-touch-icon.png`} />
+    <link rel="manifest" href={`${B}site.webmanifest`} />
+    <meta name="theme-color" content="#1a3a5c" />
+
+    <!-- Structured data: LocalBusiness (ProfessionalService) -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "@id": "https://yokoyama-s.jp/#organization",
+      name: "よこやまグループ",
+      alternateName: [
+        "有限会社横山測量設計事務所",
+        "土地家屋調査士横山太郎事務所",
+        "司法書士リーガルオフィスよこやま",
+        "行政書士横山太郎事務所",
+      ],
+      description:
+        "北海道斜里町を拠点とする測量設計、土地家屋調査士、司法書士、行政書士事務所。ドローンレーザー測量から不動産取引・相続・農地許認可までワンストップ対応。",
+      url: "https://yokoyama-s.jp/",
+      logo: "https://yokoyama-s.jp/img/03-1_yokoyama_survey-3_mark.png",
+      image: "https://yokoyama-s.jp/og-image.png",
+      telephone: "+81-152-23-1311",
+      faxNumber: "+81-152-23-0626",
+      email: "",
+      priceRange: "¥¥",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "青葉町9番地13",
+        addressLocality: "斜里町",
+        addressRegion: "北海道",
+        postalCode: "099-4117",
+        addressCountry: "JP",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 43.9113,
+        longitude: 144.6646,
+      },
+      areaServed: [
+        { "@type": "AdministrativeArea", name: "オホーツク総合振興局" },
+        { "@type": "AdministrativeArea", name: "根室振興局" },
+        { "@type": "AdministrativeArea", name: "釧路総合振興局" },
+      ],
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          opens: "09:00",
+          closes: "16:00",
+        },
+      ],
+      founder: { "@type": "Person", name: "横山健治" },
+      foundingDate: "1983",
+      sameAs: [],
+    })} />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -56,17 +122,22 @@ const B = import.meta.env.BASE_URL;
       rel="stylesheet"
     />
 
-    <!-- Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-PVQRTFSTLZ"></script>
+    <!-- Google Analytics (production hostnames only) -->
     <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-PVQRTFSTLZ");
+      (function () {
+        var prod = ["yokoyama-s.jp", "www.yokoyama-s.jp"];
+        if (prod.indexOf(location.hostname) === -1) return;
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=G-PVQRTFSTLZ";
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          window.dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "G-PVQRTFSTLZ");
+      })();
     </script>
   </head>
 
