@@ -1,0 +1,279 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title =
+  "【北海道斜里町】よこやまグループ｜測量設計、土地家屋調査士、司法書士、行政書士";
+const description =
+  "北海道斜里町を拠点とする測量設計、土地家屋調査士、司法書士、行政書士事務所。広大地のドローンレーザー測量から不動産取引・相続手続きまで幅広く対応。測量調査、契約・登記・各種許認可手続きまでトータルサポートいたします。";
+
+const services = [
+  { img: "/img/02-1_surveying.png", alt: "測量設計", href: "/" },
+  { img: "/img/02-2_real_estate.png", alt: "不動産法務", href: "/" },
+  { img: "/img/02-3_inheritance.png", alt: "相続・遺言", href: "/" },
+  { img: "/img/02-4_farmland.png", alt: "農地・許認可", href: "/" },
+  { img: "/img/02-5_corporation.png", alt: "法人関係", href: "/" },
+  {
+    img: "/img/02-7_nodecloud.png",
+    alt: "NodeCloud",
+    href: "#",
+    external: true,
+  },
+];
+
+const groups = [
+  {
+    img: "/img/03-1_yokoyama_survey-3_mark.png",
+    name: "有限会社\n横山測量設計事務所",
+    sub: "測量業登録",
+    reg: "(6)24058",
+    href: "/",
+  },
+  {
+    img: "/img/03-2_locos_mark.png",
+    name: "土地家屋調査士\n横山太郎事務所",
+    sub: "釧路土地家屋調査士会所属",
+    reg: "第342号",
+    href: "/",
+  },
+  {
+    img: "/img/03-3_shihoushoshi_mark.png",
+    name: "司法書士リーガル\nオフィスよこやま",
+    sub: "釧路司法書士会所属",
+    reg: "第240号",
+    href: "/",
+  },
+  {
+    img: "/img/03-4_gyouseishoshi_mark.png",
+    name: "行政書士\n横山太郎事務所",
+    sub: "北海道行政書士会所属",
+    reg: "第18011207号",
+    href: "/",
+  },
+];
+
+const history = [
+  [
+    "1983年",
+    "創業者横山健治が斜里町本町に有限会社横山測量設計事務所を設立　同年土地家屋調査士横山健治事務所設立",
+  ],
+  ["1989年", "斜里町青葉町に事務所移転"],
+  ["2013年", "国内で5番目となる固定翼UAVによるドローン測量事業開始"],
+  ["2015年", "土地家屋調査士横山太郎事務所設立"],
+  ["2015年", "横山太郎が取締役社長に就任"],
+  ["2017年", "司法書士リーガルオフィスよこやま設立"],
+  ["2018年", "行政書士横山太郎事務所設立"],
+];
+
+const values = [
+  "顧客　社員　会社　どれが大事ではなく　どれも大事",
+  "向上心とチャレンジ精神を忘れずに　成長を楽しもう",
+  "現状に満足せず　より良い方法を考えよう",
+  "個人技もチームプレイも　できるチームは強い",
+  "仕事は一人じゃできない　リスペクトを忘れずに",
+  "頼んでよかったと思われるサービスを続けていれば　仕事を失うことはない",
+  "目の前の利益に捕われず、中長期的な視点で考えよう",
+  "自分だけ利益を得ようとすると　結果的には損をする",
+  "正しく努力をした人が　公正に評価されなければならない",
+];
+
+const mainActivities = [
+  "斜里町との防災協定締結",
+  "数学検定・算数検定の実施",
+  "スケートリンクの測量",
+  "空き家対策協議会委員",
+];
+
+const mainOrganizations = [
+  "釧路土地家屋調査士会（副会長）",
+  "釧路司法書士会（理事）",
+  "斜里町商工会（理事）",
+  "一般社団法人斜里青年会議所",
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <main>
+    <h2 class="section-heading">よこやまグループ</h2>
+    <section class="group-grid">
+      {
+        groups.map((g) => (
+          <a class="group-item" href={g.href}>
+            <img src={g.img} alt={g.name.replace("\n", "")} loading="lazy" />
+            <div class="name">
+              {g.name.split("\n").map((line, i, arr) => (
+                <>
+                  {line}
+                  {i < arr.length - 1 && <br />}
+                </>
+              ))}
+            </div>
+            <div class="sub">{g.sub}</div>
+            <div class="reg">{g.reg}</div>
+          </a>
+        ))
+      }
+    </section>
+
+    <h2 class="section-heading">業務内容</h2>
+    <section class="service-grid">
+      {
+        services.map((s) => (
+          <a
+            class="service-item"
+            href={s.href}
+            aria-label={s.alt}
+            target={s.external ? "_blank" : undefined}
+            rel={s.external ? "noopener noreferrer" : undefined}
+          >
+            <img src={s.img} alt={s.alt} width="218" height="87" loading="lazy" />
+          </a>
+        ))
+      }
+    </section>
+
+    <details class="jinr-details">
+      <summary>企業概要</summary>
+
+      <h3 class="sub-heading">沿革</h3>
+      <table class="stripes">
+        <tbody>
+          {
+            history.map(([year, event]) => (
+              <tr>
+                <td>{year}</td>
+                <td>{event}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+
+      <h3 class="sub-heading">資格・登録・所属</h3>
+      <p>
+        釧路土地家屋調査士会/釧路司法書士会/北海道行政書士会/釧路公共嘱託登記土地家屋調査士協会/斜里町商工会/網走測量設計業協会
+      </p>
+    </details>
+
+    <details class="jinr-details">
+      <summary>よこやまグループ経営ミッション・ビジョン・バリュー</summary>
+
+      <h4 class="minor-heading">経営ミッション</h4>
+      <p>
+        私たちは、社会・地域・人々の様々な課題に対して、事業活動を通じて解決方法を提案し、より良い社会に貢献することを目指します。
+      </p>
+
+      <h4 class="minor-heading">経営ビジョン</h4>
+      <p>「地域と共に成長する会社」</p>
+
+      <h4 class="minor-heading">バリュー（価値観）</h4>
+      <ul>
+        {values.map((v) => <li>{v}</li>)}
+      </ul>
+    </details>
+
+    <h2 class="section-heading">当事務所の特徴</h2>
+
+    <details class="jinr-details">
+      <summary>不動産取引を横断的にサポート</summary>
+      <p>
+        不動産の手続きには現地の状況に応じて様々な法律や複雑な権利関係が絡み、円滑かつ確実に進めるためには適切な専門家を選ぶことが重要です。当事務所はマルチライセンスの強みを活かし測量から不動産登記、各種許認可手続きまでワンストップで対応できる体制を整えております。
+      </p>
+    </details>
+
+    <details class="jinr-details">
+      <summary>IT技術による課題解決</summary>
+      <p>
+        私達は士業の中でもIT技術を強化しており、ドローンやレーザースキャナ、WEB-GISなどのシステムを積極的に導入しております。また業務アプリケーションを独自開発し、常に社内オペレーションシステムの改善を行っております。これらにより処理時間の短縮、コミュニケーションの円滑化をはかり、サービス品質の向上に努めております。
+      </p>
+    </details>
+
+    <details class="jinr-details">
+      <summary>地域密着</summary>
+      <p>
+        私達は世界自然遺産知床のまち・北海道斜里町を拠点に「地域とともに成長する会社」というビジョンを掲げ事業を行っております。直接的な各種貢献活動に加え、地域の様々な団体に所属しながら地域の発展に尽力してまいります。また関連業界団体に所属し、業界の発展に寄与しております。
+      </p>
+
+      <details class="jinr-details">
+        <summary>所属団体・活動の例</summary>
+        <h4 class="minor-heading">主な活動</h4>
+        <ul>
+          {mainActivities.map((a) => <li>{a}</li>)}
+        </ul>
+        <h4 class="minor-heading">主な所属団体</h4>
+        <ul>
+          {mainOrganizations.map((o) => <li>{o}</li>)}
+        </ul>
+      </details>
+    </details>
+
+    <h2 class="section-heading">業務対応地域</h2>
+    <img
+      class="area-map"
+      src="/img/doto-map.png"
+      alt="道東エリア対応地域マップ"
+      width="560"
+      height="400"
+      loading="lazy"
+    />
+
+    <h4 class="minor-heading">オホーツクエリア</h4>
+    <p>
+      斜里町/小清水町/清里町/網走市/北見市/美幌町/津別町/大空町/訓子府町/湧別町/佐呂間町
+    </p>
+
+    <h4 class="minor-heading">根釧エリア</h4>
+    <p>中標津町/標津町/羅臼町/別海町/弟子屈町/標茶町</p>
+
+    <h2 class="section-heading">主要取引先</h2>
+    <p>
+      官公署/建設会社/建築会社/不動産会社/農業関係/民間<br />
+      ※同業者様（測量会社/土地家屋調査士/司法書士事務所）のサポートも致します
+    </p>
+
+    <h2 class="section-heading">事務所スタッフ</h2>
+    <div class="profile-card">
+      <div class="profile-left">
+        <img
+          class="profile-photo"
+          src="/img/staff-yokoyama.jpg"
+          alt="横山太郎"
+          width="100"
+          height="100"
+        />
+        <div class="profile-name">横山太郎</div>
+        <div class="profile-job">横山グループ代表</div>
+      </div>
+      <div class="profile-right">
+        <div class="profile-label">Profile</div>
+        <div class="profile-text">
+          昭和55年静岡県で生まれ。2歳から学生時代を除き人生の大半を北海道斜里町で過ごす。<br
+          />
+          網走南ヶ丘高校卒業・立命館大学理工学部中退<br />
+          グロービス経営大学院卒業(MBA)<br />
+          保有資格：測量士・土地家屋調査士・司法書士・行政書士<br />
+          ドローン検定3級
+        </div>
+      </div>
+    </div>
+
+    <p>測量担当社員：2名　法務担当社員：1名　総務担当社員：2名　グループ全5名</p>
+
+    <h3 class="sub-heading">求人情報</h3>
+    <ul>
+      <li>現在、求人は受け付けておりません。</li>
+    </ul>
+
+    <h2 class="section-heading">お問い合わせ</h2>
+    <p>
+      <strong style="color:#1565c0;font-size:1.15rem;">
+        TEL ０１５２－２３－１３１１
+      </strong>
+    </p>
+    <p>
+      平日９：００～１６：００（土日祝日、時間外でのご相談は個別にお問い合わせください）
+    </p>
+    <p>
+      ※不在となる場合もございますので、事務所にお越しの際は事前にご連絡をお願いします。
+    </p>
+  </main>
+</BaseLayout>

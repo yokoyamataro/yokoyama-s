@@ -1,0 +1,136 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  headline?: string;
+}
+
+const {
+  title,
+  description,
+  canonical = "https://yokoyama-s.jp/",
+  headline = "測量・登記・農地の手続きはおまかせください",
+} = Astro.props;
+
+const siteName =
+  "【北海道斜里町】よこやまグループ｜測量設計、土地家屋調査士、司法書士、行政書士";
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="測量,司法書士,行政書士,相続,農地,ドローン,斜里町,北海道"
+    />
+    <meta name="robots" content="max-image-preview:large" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- OGP -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-PVQRTFSTLZ"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-PVQRTFSTLZ");
+    </script>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <header id="siteHeader">
+        <div class="header-top">
+          <a href="/" class="brand">
+            <img
+              class="brand-logo"
+              src="/img/03-1_yokoyama_survey-3_mark.png"
+              alt="よこやまグループ"
+              width="80"
+              height="80"
+            />
+            <div class="brand-text">
+              <p class="brand-eyebrow">北海道斜里町</p>
+              <p class="brand-name">よこやまグループ</p>
+              <p class="brand-tagline">
+                測量設計・土地家屋調査士・司法書士・行政書士
+              </p>
+            </div>
+          </a>
+          <div class="header-contact">
+            <a href="tel:0152231311" class="contact-tel">
+              <span class="contact-icon" aria-hidden="true">☎</span>0152-23-1311
+            </a>
+            <p class="contact-hours">平日 9:00〜16:00</p>
+          </div>
+        </div>
+        <h1 class="brand-headline">{headline}</h1>
+      </header>
+
+      <slot />
+
+      <footer id="siteFooter">
+        <div class="footer-columns">
+          <div>
+            --よこやまグループ--<br />
+            有限会社横山測量設計事務所<br />
+            土地家屋調査士横山太郎事務所<br />
+            司法書士リーガルオフィスよこやま<br />
+            行政書士横山太郎事務所
+          </div>
+          <div>
+            --アクセス--<br />
+            〒099-4117<br />
+            北海道斜里郡斜里町青葉町9番地13<br />
+            TEL 0152-23-1311<br />
+            FAX 0152-23-0626
+          </div>
+          <div>
+            --外部リンク--<br />
+            <a href="https://www.town.shari.hokkaido.jp/">斜里町</a><br />
+            <a href="https://kushiro-chosashi.jp/">釧路土地家屋調査士会</a><br
+            />
+            <a href="https://kusiro-s.jpn.org/">釧路司法書士会</a><br />
+            <a href="https://www.do-gyosei.or.jp/">北海道行政書士会</a><br />
+            <a href="https://irest.or.jp/"
+              >一般社団法人不動産調査技術研究所</a
+            >
+          </div>
+        </div>
+        <div class="copyright">© 2025–{year} 【北海道斜里町】よこやまグループ</div>
+      </footer>
+    </div>
+  </body>
+</html>
