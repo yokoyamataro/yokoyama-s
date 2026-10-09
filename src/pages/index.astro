@@ -1,19 +1,21 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
+const B = import.meta.env.BASE_URL;
+
 const title =
   "【北海道斜里町】よこやまグループ｜測量設計、土地家屋調査士、司法書士、行政書士";
 const description =
   "北海道斜里町を拠点とする測量設計、土地家屋調査士、司法書士、行政書士事務所。広大地のドローンレーザー測量から不動産取引・相続手続きまで幅広く対応。測量調査、契約・登記・各種許認可手続きまでトータルサポートいたします。";
 
 const services = [
-  { img: "/img/02-1_surveying.png", alt: "測量設計", href: "/" },
-  { img: "/img/02-2_real_estate.png", alt: "不動産法務", href: "/" },
-  { img: "/img/02-3_inheritance.png", alt: "相続・遺言", href: "/" },
-  { img: "/img/02-4_farmland.png", alt: "農地・許認可", href: "/" },
-  { img: "/img/02-5_corporation.png", alt: "法人関係", href: "/" },
+  { img: "img/02-1_surveying.png", alt: "測量設計", href: B },
+  { img: "img/02-2_real_estate.png", alt: "不動産法務", href: B },
+  { img: "img/02-3_inheritance.png", alt: "相続・遺言", href: B },
+  { img: "img/02-4_farmland.png", alt: "農地・許認可", href: B },
+  { img: "img/02-5_corporation.png", alt: "法人関係", href: B },
   {
-    img: "/img/02-7_nodecloud.png",
+    img: "img/02-7_nodecloud.png",
     alt: "NodeCloud",
     href: "#",
     external: true,
@@ -22,32 +24,32 @@ const services = [
 
 const groups = [
   {
-    img: "/img/03-1_yokoyama_survey-3_mark.png",
+    img: "img/03-1_yokoyama_survey-3_mark.png",
     name: "有限会社\n横山測量設計事務所",
     sub: "測量業登録",
     reg: "(6)24058",
-    href: "/",
+    href: B,
   },
   {
-    img: "/img/03-2_locos_mark.png",
+    img: "img/03-2_locos_mark.png",
     name: "土地家屋調査士\n横山太郎事務所",
     sub: "釧路土地家屋調査士会所属",
     reg: "第342号",
-    href: "/",
+    href: B,
   },
   {
-    img: "/img/03-3_shihoushoshi_mark.png",
+    img: "img/03-3_shihoushoshi_mark.png",
     name: "司法書士リーガル\nオフィスよこやま",
     sub: "釧路司法書士会所属",
     reg: "第240号",
-    href: "/",
+    href: B,
   },
   {
-    img: "/img/03-4_gyouseishoshi_mark.png",
+    img: "img/03-4_gyouseishoshi_mark.png",
     name: "行政書士\n横山太郎事務所",
     sub: "北海道行政書士会所属",
     reg: "第18011207号",
-    href: "/",
+    href: B,
   },
 ];
 
@@ -98,7 +100,7 @@ const mainOrganizations = [
       {
         groups.map((g) => (
           <a class="group-item" href={g.href}>
-            <img src={g.img} alt={g.name.replace("\n", "")} loading="lazy" />
+            <img src={B + g.img} alt={g.name.replace("\n", "")} loading="lazy" />
             <div class="name">
               {g.name.split("\n").map((line, i, arr) => (
                 <>
@@ -125,7 +127,7 @@ const mainOrganizations = [
             target={s.external ? "_blank" : undefined}
             rel={s.external ? "noopener noreferrer" : undefined}
           >
-            <img src={s.img} alt={s.alt} width="218" height="87" loading="lazy" />
+            <img src={B + s.img} alt={s.alt} width="218" height="87" loading="lazy" />
           </a>
         ))
       }
@@ -209,7 +211,7 @@ const mainOrganizations = [
     <h2 class="section-heading">業務対応地域</h2>
     <img
       class="area-map"
-      src="/img/doto-map.png"
+      src={`${B}img/doto-map.png`}
       alt="道東エリア対応地域マップ"
       width="560"
       height="400"
@@ -235,7 +237,7 @@ const mainOrganizations = [
       <div class="profile-left">
         <img
           class="profile-photo"
-          src="/img/staff-yokoyama.jpg"
+          src={`${B}img/staff-yokoyama.jpg`}
           alt="横山太郎"
           width="100"
           height="100"
